@@ -20,7 +20,6 @@ namespace Terminplaner
         public string Ort { get; set; }
         public string Beschreibung { get; set; }
     
-        public virtual Calendar Calendar { get; set; }
         public virtual Person Person { get; set; }
     }
 }

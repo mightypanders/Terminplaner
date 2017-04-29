@@ -1,1 +1,19 @@
 C:\Users\fuhrm\OneDrive\Dokumente\Visual Studio 2015\Projects\Terminplaner\Terminplaner\bin\Debug\Terminplaner.exe.config
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\Terminplaner.exe.config
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\Terminplaner.exe
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\Terminplaner.pdb
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.dll
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLite.dll
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.xml
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLite.xml
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.csprojResolveAssemblyReference.cache
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.Form1.resources
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.formPerson.resources
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.Properties.Resources.resources
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.csproj.GenerateResource.Cache
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.exe
+C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.pdb

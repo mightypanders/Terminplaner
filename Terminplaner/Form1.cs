@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,24 +14,24 @@ namespace Terminplaner
 {
     public partial class Form1 : Form
     {
-        TerminplanerEntities db;
-        List<Termin> termine;
+        TerminplanerEntities1 db;
+        List<Termin> _termine;
         public Form1()
         {
             InitializeComponent();
-            db = new TerminplanerEntities();
+            db = new TerminplanerEntities1();
         }
 
         private void btnPerson_Click(object sender, EventArgs e)
         {
-            formPerson xfrm = new formPerson();
+            FormPerson xfrm = new FormPerson();
             xfrm.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             RefreshComboBox();
-            RefreshDGV();
+            RefreshDgv();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -86,20 +87,18 @@ namespace Terminplaner
                 int rowindex = dataGridView1.CurrentCell.RowIndex;
 
                 id = Convert.ToInt32(dataGridView1.Rows[rowindex].Cells[3].Value);
-                if (id != 0)
-                {
-                    Termin termin = db.Termin.SingleOrDefault(x => x.ID == id);
-                    db.Termin.Remove(termin);
-                    db.SaveChanges();
-                    RefreshDGV();
-                }
+                if (id == 0) return;
+                Termin termin = db.Termin.SingleOrDefault(x => x.ID == id);
+                db.Termin.Remove(termin);
+                db.SaveChanges();
+                RefreshDgv();
             }
 
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            RefreshDGV();
+            RefreshDgv();
         }
 
         private void RefreshComboBox()
@@ -110,17 +109,15 @@ namespace Terminplaner
             comboBox1.ValueMember = "ID";
         }
 
-        private void RefreshDGV()
+        private void RefreshDgv()
         {
             dataGridView1.Rows.Clear();
-            termine = db.Termin.ToList();
+            _termine = db.Termin.ToList();
 
-            foreach (Termin t in termine)
+            foreach (Termin t in _termine)
             {
-                if (t != null)
-                {
-                    this.dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
-                }
+                if (t == null) continue;
+                this.dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
             }
         }
     }

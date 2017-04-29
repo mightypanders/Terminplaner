@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TerminplanerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Datum" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vorname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nachname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Strasse" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Postleitzahl" Type="Int64" />
+    <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_0_0" FromRole="Person" ToRole="Termin" />
+  </EntityType>
+  <EntityType Name="Termin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCalendar" Type="Int64" Nullable="false" />
+    <Property Name="IDPerson" Type="Int64" Nullable="false" />
+    <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Beschreibung" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Termin_0_0" FromRole="Termin" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK_Termin_0_0">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Termin">
+        <PropertyRef Name="IDPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TerminplanerEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" />
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="Termin" EntityType="Self.Termin" />
+    <AssociationSet Name="FK_Termin_0_0" Association="Self.FK_Termin_0_0">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Termin" EntitySet="Termin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

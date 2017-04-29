@@ -13,10 +13,10 @@ namespace Terminplaner
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TerminplanerEntities : DbContext
+    public partial class TerminplanerEntities1 : DbContext
     {
-        public TerminplanerEntities()
-            : base("name=TerminplanerEntities")
+        public TerminplanerEntities1()
+            : base("name=TerminplanerEntities1")
         {
         }
     

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Terminplaner
 {
-    public partial class formPerson : Form
+    public partial class FormPerson : Form
     {
-        TerminplanerEntities db;
-        public formPerson()
+        TerminplanerEntities1 db;
+        public FormPerson()
         {
             InitializeComponent();
-            db = new TerminplanerEntities();
+            db = new TerminplanerEntities1();
             RefreshListBox();
         }
 
@@ -51,40 +51,34 @@ namespace Terminplaner
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;
-            if (item != null)
-            {
-                txtVorname.Text = item.Vorname;
-                txtNachname.Text = item.Nachname;
-                txtStrasse.Text = item.Strasse;
-                txtPLZ.Text = item.Postleitzahl.ToString();
-                txtOrt.Text = item.Ort;
-            }
+            if (item == null) return;
+            txtVorname.Text = item.Vorname;
+            txtNachname.Text = item.Nachname;
+            txtStrasse.Text = item.Strasse;
+            txtPLZ.Text = item.Postleitzahl.ToString();
+            txtOrt.Text = item.Ort;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;
             Person person = db.Person.SingleOrDefault(x => x.ID == item.ID);
-            if (person != null)
-            {
-                person.Vorname = txtVorname.Text;
-                person.Nachname = txtNachname.Text;
-                person.Strasse = txtStrasse.Text;
-                person.Postleitzahl = Convert.ToInt32(txtPLZ.Text);
-                person.Ort = txtOrt.Text;
-                db.SaveChanges();
-            }
+            if (person == null) return;
+            person.Vorname = txtVorname.Text;
+            person.Nachname = txtNachname.Text;
+            person.Strasse = txtStrasse.Text;
+            person.Postleitzahl = Convert.ToInt32(txtPLZ.Text);
+            person.Ort = txtOrt.Text;
+            db.SaveChanges();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;
             Person person = db.Person.SingleOrDefault(x => x.ID == item.ID);
-            if (person != null)
-            {
-                db.Person.Remove(person);
-                db.SaveChanges();
-            }
+            if (person == null) return;
+            db.Person.Remove(person);
+            db.SaveChanges();
         }
     }
 }

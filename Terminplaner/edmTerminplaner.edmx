@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TerminplanerModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\svefuh.EDATA\Documents\Visual Studio 2015\Projects\Terminplaner\Terminplaner\Terminplaner.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TerminplanerModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\fuhrm\OneDrive\Dokumente\Visual Studio 2015\Projects\Terminplaner\Terminplaner\Terminplaner.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Calendar">
           <Key>
             <PropertyRef Name="ID" />
@@ -54,7 +54,8 @@
             <End Role="Termin" EntitySet="Termin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TerminplanerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -63,7 +64,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Datum" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -84,23 +85,10 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDCalendar" Type="Int64" Nullable="false" />
           <Property Name="IDPerson" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Calendar" Relationship="Self.FK_Termin_1_0" FromRole="Termin" ToRole="Calendar" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Termin_0_0" FromRole="Termin" ToRole="Person" />
           <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Beschreibung" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Termin_0_0" FromRole="Termin" ToRole="Person" />
         </EntityType>
-        <Association Name="FK_Termin_1_0">
-          <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
-          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calendar">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Termin">
-              <PropertyRef Name="IDCalendar" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Termin_0_0">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
           <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
@@ -113,14 +101,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TerminplanerEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TerminplanerEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Calendar" EntityType="Self.Calendar" />
           <EntitySet Name="Person" EntityType="Self.Person" />
           <EntitySet Name="Termin" EntityType="Self.Termin" />
-          <AssociationSet Name="FK_Termin_1_0" Association="Self.FK_Termin_1_0">
-            <End Role="Calendar" EntitySet="Calendar" />
-            <End Role="Termin" EntitySet="Termin" />
-          </AssociationSet>
           <AssociationSet Name="FK_Termin_0_0" Association="Self.FK_Termin_0_0">
             <End Role="Person" EntitySet="Person" />
             <End Role="Termin" EntitySet="Termin" />
@@ -131,12 +115,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TerminplanerModelStoreContainer" CdmEntityContainer="TerminplanerEntities">
+        <EntityContainerMapping StorageEntityContainer="TerminplanerModelStoreContainer" CdmEntityContainer="TerminplanerEntities1">
           <EntitySetMapping Name="Calendar">
             <EntityTypeMapping TypeName="TerminplanerModel.Calendar">
               <MappingFragment StoreEntitySet="Calendar">
-                <ScalarProperty Name="Datum" ColumnName="Datum" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -155,11 +139,11 @@
           <EntitySetMapping Name="Termin">
             <EntityTypeMapping TypeName="TerminplanerModel.Termin">
               <MappingFragment StoreEntitySet="Termin">
-                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
-                <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDCalendar" ColumnName="IDCalendar" />
                 <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

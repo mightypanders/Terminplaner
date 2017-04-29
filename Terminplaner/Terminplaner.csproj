@@ -95,11 +95,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="formPerson.cs">
+    <Compile Include="FormPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formPerson.Designer.cs">
-      <DependentUpon>formPerson.cs</DependentUpon>
+    <Compile Include="FormPerson.Designer.cs">
+      <DependentUpon>FormPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs">
       <DependentUpon>edmTerminplaner.tt</DependentUpon>
@@ -112,8 +112,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formPerson.resx">
-      <DependentUpon>formPerson.cs</DependentUpon>
+    <EmbeddedResource Include="FormPerson.resx">
+      <DependentUpon>FormPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,19 +146,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="edmTerminplaner.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>edmTerminplaner.Context.cs</LastGenOutput>
       <DependentUpon>edmTerminplaner.edmx</DependentUpon>
+      <LastGenOutput>edmTerminplaner.Context.cs</LastGenOutput>
     </Content>
     <Content Include="edmTerminplaner.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>edmTerminplaner.edmx</DependentUpon>
       <LastGenOutput>edmTerminplaner.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.0\build\net451\System.Data.SQLite.Core.targets')" />

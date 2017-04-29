@@ -23,7 +23,9 @@ namespace Terminplaner
         public long ID { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }
-        public string Name { get { return Vorname + " " + Nachname; } }
+        public string Name {
+            get { return Vorname + " " + Nachname; }
+        }
         public string Strasse { get; set; }
         public Nullable<long> Postleitzahl { get; set; }
         public string Ort { get; set; }

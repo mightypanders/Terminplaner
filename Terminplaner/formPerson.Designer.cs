@@ -1,6 +1,6 @@
 ﻿namespace Terminplaner
 {
-    partial class formPerson
+    partial class FormPerson
     {
         /// <summary>
         /// Required designer variable.
@@ -182,7 +182,7 @@
             this.Controls.Add(this.Strasse);
             this.Controls.Add(this.Nachname);
             this.Controls.Add(this.Vorname);
-            this.Name = "formPerson";
+            this.Name = "FormPerson";
             this.Text = "formPerson";
             this.Load += new System.EventHandler(this.formPerson_Load);
             this.ResumeLayout(false);
