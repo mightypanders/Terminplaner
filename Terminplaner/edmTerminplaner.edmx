@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TerminplanerModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\svefuh.EDATA\Documents\Visual Studio 2015\Projects\Terminplaner\Terminplaner\Terminplaner.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Nachname" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Strasse" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Postleitzahl" Type="integer" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCalendar" Type="integer" Nullable="false" />
+          <Property Name="IDPerson" Type="integer" Nullable="false" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Beschreibung" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <Association Name="FK_Termin_0_0">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="IDPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TerminplanerModelStoreContainer">
+          <EntitySet Name="Calendar" EntityType="Self.Calendar" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" store:Type="Tables" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" store:Type="Tables" />
+          <AssociationSet Name="FK_Termin_0_0" Association="Self.FK_Termin_0_0">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TerminplanerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vorname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nachname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Strasse" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Postleitzahl" Type="Int64" />
+          <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_0_0" FromRole="Person" ToRole="Termin" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCalendar" Type="Int64" Nullable="false" />
+          <Property Name="IDPerson" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Calendar" Relationship="Self.FK_Termin_1_0" FromRole="Termin" ToRole="Calendar" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Termin_0_0" FromRole="Termin" ToRole="Person" />
+          <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Beschreibung" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Termin_1_0">
+          <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="IDCalendar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_0_0">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="IDPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TerminplanerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Calendar" EntityType="Self.Calendar" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" />
+          <AssociationSet Name="FK_Termin_1_0" Association="Self.FK_Termin_1_0">
+            <End Role="Calendar" EntitySet="Calendar" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_0_0" Association="Self.FK_Termin_0_0">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TerminplanerModelStoreContainer" CdmEntityContainer="TerminplanerEntities">
+          <EntitySetMapping Name="Calendar">
+            <EntityTypeMapping TypeName="TerminplanerModel.Calendar">
+              <MappingFragment StoreEntitySet="Calendar">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="TerminplanerModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
+                <ScalarProperty Name="Postleitzahl" ColumnName="Postleitzahl" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Termin">
+            <EntityTypeMapping TypeName="TerminplanerModel.Termin">
+              <MappingFragment StoreEntitySet="Termin">
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCalendar" ColumnName="IDCalendar" />
+                <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
