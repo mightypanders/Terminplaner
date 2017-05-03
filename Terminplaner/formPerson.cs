@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Terminplaner
@@ -17,17 +12,16 @@ namespace Terminplaner
         {
             InitializeComponent();
             db = new TerminplanerEntities1();
-            RefreshListBox();
         }
 
         private void formPerson_Load(object sender, EventArgs e)
         {
-            
+            RefreshListBox();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            Person person = new Person()
+            Person person = new Person
             {
                 Vorname = txtVorname.Text,
                 Nachname = txtNachname.Text,

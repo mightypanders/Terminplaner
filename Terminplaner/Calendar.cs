@@ -9,9 +9,6 @@
 
 namespace Terminplaner
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Calendar
     {
         public long ID { get; set; }

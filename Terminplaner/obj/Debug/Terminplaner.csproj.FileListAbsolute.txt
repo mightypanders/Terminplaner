@@ -17,3 +17,6 @@ C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.Pro
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.csproj.GenerateResource.Cache
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.exe
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.pdb
+C:\Users\fuhrm\Source\Repos\Planer\Terminplaner\bin\Debug\Terminplaner.exe.config
+C:\Users\fuhrm\Source\Repos\Planer\Terminplaner\obj\Debug\Terminplaner.exe
+C:\Users\fuhrm\Source\Repos\Planer\Terminplaner\obj\Debug\Terminplaner.pdb

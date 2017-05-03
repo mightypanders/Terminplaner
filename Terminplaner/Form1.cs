@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Terminplaner;
 
 namespace Terminplaner
 {
@@ -89,6 +82,7 @@ namespace Terminplaner
                 id = Convert.ToInt32(dataGridView1.Rows[rowindex].Cells[3].Value);
                 if (id == 0) return;
                 Termin termin = db.Termin.SingleOrDefault(x => x.ID == id);
+                if (termin == null) return;
                 db.Termin.Remove(termin);
                 db.SaveChanges();
                 RefreshDgv();
@@ -117,7 +111,7 @@ namespace Terminplaner
             foreach (Termin t in _termine)
             {
                 if (t == null) continue;
-                this.dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
+                dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
             }
         }
     }

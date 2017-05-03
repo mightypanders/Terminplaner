@@ -1,11 +1,14 @@
-﻿namespace Terminplaner
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace Terminplaner
 {
     partial class FormPerson
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -192,19 +195,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Vorname;
-        private System.Windows.Forms.Label Nachname;
-        private System.Windows.Forms.Label Strasse;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtVorname;
-        private System.Windows.Forms.TextBox txtNachname;
-        private System.Windows.Forms.TextBox txtStrasse;
-        private System.Windows.Forms.TextBox txtPLZ;
-        private System.Windows.Forms.TextBox txtOrt;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnDelete;
+        private Label Vorname;
+        private Label Nachname;
+        private Label Strasse;
+        private Label label4;
+        private Label label5;
+        private TextBox txtVorname;
+        private TextBox txtNachname;
+        private TextBox txtStrasse;
+        private TextBox txtPLZ;
+        private TextBox txtOrt;
+        private ListBox listBox1;
+        private Button btnSave;
+        private Button btnNew;
+        private Button btnDelete;
     }
 }
