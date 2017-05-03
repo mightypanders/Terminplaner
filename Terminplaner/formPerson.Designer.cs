@@ -50,7 +50,7 @@ namespace Terminplaner
             // Vorname
             // 
             this.Vorname.AutoSize = true;
-            this.Vorname.Location = new System.Drawing.Point(321, 74);
+            this.Vorname.Location = new System.Drawing.Point(271, 13);
             this.Vorname.Name = "Vorname";
             this.Vorname.Size = new System.Drawing.Size(49, 13);
             this.Vorname.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace Terminplaner
             // Nachname
             // 
             this.Nachname.AutoSize = true;
-            this.Nachname.Location = new System.Drawing.Point(321, 113);
+            this.Nachname.Location = new System.Drawing.Point(271, 52);
             this.Nachname.Name = "Nachname";
             this.Nachname.Size = new System.Drawing.Size(59, 13);
             this.Nachname.TabIndex = 0;
@@ -68,7 +68,7 @@ namespace Terminplaner
             // Strasse
             // 
             this.Strasse.AutoSize = true;
-            this.Strasse.Location = new System.Drawing.Point(321, 150);
+            this.Strasse.Location = new System.Drawing.Point(271, 89);
             this.Strasse.Name = "Strasse";
             this.Strasse.Size = new System.Drawing.Size(42, 13);
             this.Strasse.TabIndex = 0;
@@ -77,7 +77,7 @@ namespace Terminplaner
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(321, 194);
+            this.label4.Location = new System.Drawing.Point(271, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 0;
@@ -86,7 +86,7 @@ namespace Terminplaner
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(321, 237);
+            this.label5.Location = new System.Drawing.Point(271, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 13);
             this.label5.TabIndex = 0;
@@ -94,35 +94,35 @@ namespace Terminplaner
             // 
             // txtVorname
             // 
-            this.txtVorname.Location = new System.Drawing.Point(402, 71);
+            this.txtVorname.Location = new System.Drawing.Point(352, 10);
             this.txtVorname.Name = "txtVorname";
             this.txtVorname.Size = new System.Drawing.Size(100, 20);
             this.txtVorname.TabIndex = 1;
             // 
             // txtNachname
             // 
-            this.txtNachname.Location = new System.Drawing.Point(402, 110);
+            this.txtNachname.Location = new System.Drawing.Point(352, 49);
             this.txtNachname.Name = "txtNachname";
             this.txtNachname.Size = new System.Drawing.Size(100, 20);
             this.txtNachname.TabIndex = 1;
             // 
             // txtStrasse
             // 
-            this.txtStrasse.Location = new System.Drawing.Point(402, 147);
+            this.txtStrasse.Location = new System.Drawing.Point(352, 86);
             this.txtStrasse.Name = "txtStrasse";
             this.txtStrasse.Size = new System.Drawing.Size(100, 20);
             this.txtStrasse.TabIndex = 1;
             // 
             // txtPLZ
             // 
-            this.txtPLZ.Location = new System.Drawing.Point(402, 191);
+            this.txtPLZ.Location = new System.Drawing.Point(352, 130);
             this.txtPLZ.Name = "txtPLZ";
             this.txtPLZ.Size = new System.Drawing.Size(100, 20);
             this.txtPLZ.TabIndex = 1;
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(402, 234);
+            this.txtOrt.Location = new System.Drawing.Point(352, 173);
             this.txtOrt.Name = "txtOrt";
             this.txtOrt.Size = new System.Drawing.Size(100, 20);
             this.txtOrt.TabIndex = 1;
@@ -138,9 +138,9 @@ namespace Terminplaner
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(291, 319);
+            this.btnSave.Location = new System.Drawing.Point(274, 211);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(148, 23);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -148,25 +148,25 @@ namespace Terminplaner
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(402, 319);
+            this.btnNew.Location = new System.Drawing.Point(274, 263);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(113, 23);
+            this.btnNew.Size = new System.Drawing.Size(148, 23);
             this.btnNew.TabIndex = 3;
-            this.btnNew.Text = "Neu anlegen";
+            this.btnNew.Text = "Neuen Benutzer anlegen";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(551, 319);
+            this.btnDelete.Location = new System.Drawing.Point(274, 319);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(148, 23);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Löschen";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // formPerson
+            // FormPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
