@@ -10,7 +10,6 @@ C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLi
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.xml
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\bin\Debug\System.Data.SQLite.xml
-C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.csprojResolveAssemblyReference.cache
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.Form1.resources
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.formPerson.resources
 C:\Users\fuhrm\Source\Repos\Terminplaner\Terminplaner\obj\Debug\Terminplaner.Properties.Resources.resources

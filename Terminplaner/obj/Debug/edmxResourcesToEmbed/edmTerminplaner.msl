@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TerminplanerModelStoreContainer" CdmEntityContainer="TerminplanerEntities1">
+  <EntityContainerMapping StorageEntityContainer="TerminplanerModelStoreContainer" CdmEntityContainer="TerminplanerEF">
     <EntitySetMapping Name="Calendar">
       <EntityTypeMapping TypeName="TerminplanerModel.Calendar">
         <MappingFragment StoreEntitySet="Calendar">

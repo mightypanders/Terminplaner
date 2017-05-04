@@ -7,15 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
 namespace Terminplaner
 {
-    public partial class TerminplanerEntities1 : DbContext
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class TerminplanerEF : DbContext
     {
-        public TerminplanerEntities1()
-            : base("name=TerminplanerEntities1")
+        public TerminplanerEF()
+            : base("name=TerminplanerEF")
         {
         }
     

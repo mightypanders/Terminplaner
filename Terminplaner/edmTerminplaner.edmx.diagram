@@ -4,10 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c5c33a10712d4438a3f208c41b4f4962" Name="Diagram1">
-        <EntityTypeShape EntityType="TerminplanerModel.Calendar" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerminplanerModel.Person" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="94759de6bbe544e78d4f6c4617ea15ff" Name="Diagram1">
+        <EntityTypeShape EntityType="TerminplanerModel.Calendar" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerminplanerModel.Person" Width="1.5" PointX="7" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TerminplanerModel.Termin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TerminplanerModel.FK_Termin_1_0" ManuallyRouted="false" />
         <AssociationConnector Association="TerminplanerModel.FK_Termin_0_0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

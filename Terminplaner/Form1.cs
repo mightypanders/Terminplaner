@@ -7,14 +7,18 @@ namespace Terminplaner
 {
     public partial class Form1 : Form
     {
-        TerminplanerEntities1 db;
-        List<Termin> _termine;
+        TerminplanerEF db;
         public Form1()
         {
             InitializeComponent();
-            db = new TerminplanerEntities1();
+            db = new TerminplanerEF();
         }
 
+        /// <summary>
+        /// Öffnet die Form Person zum Anlegen, Bearbeiten und Löschen von Personen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPerson_Click(object sender, EventArgs e)
         {
             FormPerson xfrm = new FormPerson();
@@ -27,6 +31,11 @@ namespace Terminplaner
             RefreshDgv();
         }
 
+        /// <summary>
+        /// Legt einen neuen Datenbankeintrag zu dem gewünschten Termin an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null)
@@ -72,6 +81,11 @@ namespace Terminplaner
             }
         }
 
+        /// <summary>
+        /// Löscht den selektierten Termin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
@@ -90,11 +104,19 @@ namespace Terminplaner
 
         }
 
+        /// <summary>
+        /// Event beim Ändern der Selektion des Tages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             RefreshDgv();
         }
 
+        /// <summary>
+        /// Aktualisiert die Combobox
+        /// </summary>
         private void RefreshComboBox()
         {
             List<Person> personen = db.Person.ToList();
@@ -103,15 +125,24 @@ namespace Terminplaner
             comboBox1.ValueMember = "ID";
         }
 
+        /// <summary>
+        /// Aktualisiert das DataGridView
+        /// </summary>
         private void RefreshDgv()
         {
             dataGridView1.Rows.Clear();
-            _termine = db.Termin.ToList();
+            string selectedDate = monthCalendar1.SelectionRange.Start.ToShortDateString();
 
-            foreach (Termin t in _termine)
+            Calendar termine =
+                db.Calendar.SingleOrDefault(x => x.Datum == selectedDate);
+
+            if (termine != null && termine.Termin.Any())
             {
-                if (t == null) continue;
-                dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
+                foreach (Termin t in termine.Termin)
+                {
+                    if (t == null) continue;
+                    dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
+                }
             }
         }
     }

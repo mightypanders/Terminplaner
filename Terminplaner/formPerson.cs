@@ -7,11 +7,11 @@ namespace Terminplaner
 {
     public partial class FormPerson : Form
     {
-        TerminplanerEntities1 db;
+        TerminplanerEF db;
         public FormPerson()
         {
             InitializeComponent();
-            db = new TerminplanerEntities1();
+            db = new TerminplanerEF();
         }
 
         private void formPerson_Load(object sender, EventArgs e)
@@ -19,6 +19,11 @@ namespace Terminplaner
             RefreshListBox();
         }
 
+        /// <summary>
+        /// Legt eine neue Person an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, EventArgs e)
         {
             Person person = new Person
@@ -34,6 +39,9 @@ namespace Terminplaner
             RefreshListBox();
         }
 
+        /// <summary>
+        /// Aktualisiert die Listbox
+        /// </summary>
         private void RefreshListBox()
         {
             List<Person> personen = db.Person.ToList();
@@ -42,6 +50,11 @@ namespace Terminplaner
             listBox1.ValueMember = "ID";
         }
 
+        /// <summary>
+        /// Anpassung der Textboxen beim Selektieren einer anderen Person
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;
@@ -53,6 +66,11 @@ namespace Terminplaner
             txtOrt.Text = item.Ort;
         }
 
+        /// <summary>
+        /// Speichern der Änderungen an einer Person
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;
@@ -66,6 +84,11 @@ namespace Terminplaner
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Löschen der selektierten Person
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Person item = (Person)listBox1.SelectedItem;

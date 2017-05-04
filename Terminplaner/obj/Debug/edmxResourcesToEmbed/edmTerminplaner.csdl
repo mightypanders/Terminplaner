@@ -6,6 +6,7 @@
     </Key>
     <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Datum" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_1_0" FromRole="Calendar" ToRole="Termin" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -28,8 +29,21 @@
     <Property Name="IDPerson" Type="Int64" Nullable="false" />
     <Property Name="Ort" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
     <Property Name="Beschreibung" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Calendar" Relationship="Self.FK_Termin_1_0" FromRole="Termin" ToRole="Calendar" />
     <NavigationProperty Name="Person" Relationship="Self.FK_Termin_0_0" FromRole="Termin" ToRole="Person" />
   </EntityType>
+  <Association Name="FK_Termin_1_0">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+    <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Termin">
+        <PropertyRef Name="IDCalendar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Termin_0_0">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
@@ -42,10 +56,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TerminplanerEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TerminplanerEF" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Calendar" EntityType="Self.Calendar" />
     <EntitySet Name="Person" EntityType="Self.Person" />
     <EntitySet Name="Termin" EntityType="Self.Termin" />
+    <AssociationSet Name="FK_Termin_1_0" Association="Self.FK_Termin_1_0">
+      <End Role="Calendar" EntitySet="Calendar" />
+      <End Role="Termin" EntitySet="Termin" />
+    </AssociationSet>
     <AssociationSet Name="FK_Termin_0_0" Association="Self.FK_Termin_0_0">
       <End Role="Person" EntitySet="Person" />
       <End Role="Termin" EntitySet="Termin" />

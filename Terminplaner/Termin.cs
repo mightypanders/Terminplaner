@@ -9,6 +9,9 @@
 
 namespace Terminplaner
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Termin
     {
         public long ID { get; set; }
@@ -17,6 +20,7 @@ namespace Terminplaner
         public string Ort { get; set; }
         public string Beschreibung { get; set; }
     
+        public virtual Calendar Calendar { get; set; }
         public virtual Person Person { get; set; }
     }
 }

@@ -9,9 +9,21 @@
 
 namespace Terminplaner
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Calendar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Calendar()
+        {
+            this.Termin = new HashSet<Termin>();
+        }
+    
         public long ID { get; set; }
         public string Datum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Termin> Termin { get; set; }
     }
 }
