@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,13 +13,22 @@ namespace Terminplaner
         {
             InitializeComponent();
             db = new TerminplanerEF();
+            SetConnectionString();
         }
 
         private void formPerson_Load(object sender, EventArgs e)
         {
             RefreshListBox();
         }
-
+        /// <summary>
+        /// Setzt den ConnectionString zum aktuellen Ordnerpfad, damit eine Verbindung zur Datenbank (SQLite lokal) möglich ist 
+        /// </summary>
+        private void SetConnectionString()
+        {
+            string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            string connectionString = "data source=" + path + "\\Terminplaner.db";
+            db.Database.Connection.ConnectionString = connectionString;
+        }
         /// <summary>
         /// Legt eine neue Person an
         /// </summary>
