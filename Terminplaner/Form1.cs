@@ -4,13 +4,13 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
+using System.Drawing;
 
 namespace Terminplaner
 {
     public partial class Form1 : Form
     {
         TerminplanerEF db;
-        private List<Termin> _termine;
 
         public Form1()
         {
@@ -131,6 +131,29 @@ namespace Terminplaner
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             RefreshDgv();
+            MarkMeetings();
+        }
+
+        /// <summary>
+        /// Markiert Termine indem er die Schrift auf fett setzt
+        /// </summary>
+        private void MarkMeetings()
+        {
+            monthCalendar1.BoldedDates = ConvertStringToDateTime(db.Calendar.Select(x => x.Datum).ToArray());
+        }
+
+        /// <summary>
+        /// Konvertiert String-Array to DateTime-Array, weil SQLite kein DateTime kennt..
+        /// </summary>
+        private DateTime[] ConvertStringToDateTime(string[] stringArray)
+        {
+            DateTime[] dateTimeArray = new DateTime[stringArray.Length];
+
+            for (int i = 0; i < stringArray.Length; i++)
+            {
+                dateTimeArray[i] = Convert.ToDateTime(stringArray[i]);
+            }
+            return dateTimeArray;
         }
 
         /// <summary>
