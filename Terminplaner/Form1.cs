@@ -8,6 +8,8 @@ namespace Terminplaner
     public partial class Form1 : Form
     {
         TerminplanerEF db;
+        private List<Termin> _termine;
+
         public Form1()
         {
             InitializeComponent();
