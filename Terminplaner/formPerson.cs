@@ -26,6 +26,8 @@ namespace Terminplaner
         /// <param name="e"></param>
         private void btnNew_Click(object sender, EventArgs e)
         {
+            if (!isValidUser())
+                return;
             Person person = new Person
             {
                 Vorname = txtVorname.Text,
@@ -37,6 +39,7 @@ namespace Terminplaner
             db.Person.Add(person);
             db.SaveChanges();
             RefreshListBox();
+            clearLabels();
         }
 
         /// <summary>
@@ -82,6 +85,7 @@ namespace Terminplaner
             person.Postleitzahl = Convert.ToInt32(txtPLZ.Text);
             person.Ort = txtOrt.Text;
             db.SaveChanges();
+            RefreshListBox();
         }
 
         /// <summary>
@@ -96,6 +100,26 @@ namespace Terminplaner
             if (person == null) return;
             db.Person.Remove(person);
             db.SaveChanges();
+            RefreshListBox();
+            clearLabels();
+        }
+
+        private bool isValidUser()
+        {
+            if (String.IsNullOrWhiteSpace(txtNachname.Text))
+                return false;
+            if (String.IsNullOrWhiteSpace(txtVorname.Text))
+                return false;
+            return true;
+        }
+
+        private void clearLabels()
+        {
+            txtVorname.Clear();
+            txtNachname.Clear();
+            txtOrt.Clear();
+            txtPLZ.Clear();
+            txtStrasse.Clear();
         }
     }
 }

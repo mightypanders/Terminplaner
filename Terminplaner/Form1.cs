@@ -23,6 +23,8 @@ namespace Terminplaner
         {
             FormPerson xfrm = new FormPerson();
             xfrm.ShowDialog();
+            RefreshComboBox();
+            RefreshDgv();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,6 +81,7 @@ namespace Terminplaner
                 db.Termin.Add(termin);
                 db.SaveChanges();
             }
+            RefreshDgv();
         }
 
         /// <summary>
@@ -143,6 +146,19 @@ namespace Terminplaner
                     if (t == null) continue;
                     dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
                 }
+            }
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            string date = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            Calendar calendar = db.Calendar.SingleOrDefault(x => x.Datum == date);
+            _termine = db.Termin.Where(x => x.IDCalendar == calendar.ID).ToList();
+
+            foreach (Termin t in _termine)
+            {
+                if (t == null) continue;
+                dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
             }
         }
     }
