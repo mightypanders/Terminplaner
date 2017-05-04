@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Configuration;
+using System.IO;
 
 namespace Terminplaner
 {
@@ -13,7 +15,19 @@ namespace Terminplaner
         public Form1()
         {
             InitializeComponent();
+
             db = new TerminplanerEF();
+            SetConnectionString();
+        }
+
+        /// <summary>
+        /// Setzt den ConnectionString zum aktuellen Ordnerpfad, damit eine Verbindung zur Datenbank (SQLite lokal) möglich ist 
+        /// </summary>
+        private void SetConnectionString()
+        {
+            string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            string connectionString = "data source="+path+"\\Terminplaner.db";
+            db.Database.Connection.ConnectionString = connectionString;
         }
 
         /// <summary>
@@ -124,10 +138,19 @@ namespace Terminplaner
         /// </summary>
         private void RefreshComboBox()
         {
+            try
+            {
             List<Person> personen = db.Person.ToList();
             comboBox1.DataSource = personen;
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "ID";
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         /// <summary>
@@ -148,19 +171,6 @@ namespace Terminplaner
                     if (t == null) continue;
                     dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
                 }
-            }
-        }
-
-        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
-        {
-            string date = monthCalendar1.SelectionRange.Start.ToShortDateString();
-            Calendar calendar = db.Calendar.SingleOrDefault(x => x.Datum == date);
-            _termine = db.Termin.Where(x => x.IDCalendar == calendar.ID).ToList();
-
-            foreach (Termin t in _termine)
-            {
-                if (t == null) continue;
-                dataGridView1.Rows.Add(t.Person.Name, t.Ort, t.Beschreibung, t.ID);
             }
         }
     }
