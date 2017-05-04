@@ -120,6 +120,12 @@ namespace Terminplaner
                 return false;
             if (String.IsNullOrWhiteSpace(txtVorname.Text))
                 return false;
+            List<Person> list = db.Person.Where(x => x.Nachname == txtNachname.Text && x.Vorname == txtVorname.Text).ToList();
+            if (list.Count > 0)
+            {
+                MessageBox.Show("Es exisitiert bereits ein Benutzer mit diesem Namen.");
+                return false;
+            }
             return true;
         }
 
