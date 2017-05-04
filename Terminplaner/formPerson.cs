@@ -113,7 +113,10 @@ namespace Terminplaner
             RefreshListBox();
             clearLabels();
         }
-
+        /// <summary>
+        /// Verifiziert ob der neue Benutzer sowohl Nachnamen als auch Vornamen hat und kein Duplikat ist.
+        /// </summary>
+        /// <returns></returns>
         private bool isValidUser()
         {
             if (String.IsNullOrWhiteSpace(txtNachname.Text))
@@ -128,7 +131,9 @@ namespace Terminplaner
             }
             return true;
         }
-
+        /// <summary>
+        /// leert alle Textfelder
+        /// </summary>
         private void clearLabels()
         {
             txtVorname.Clear();
